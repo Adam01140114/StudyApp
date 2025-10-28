@@ -1,0 +1,101 @@
+{
+  "title": "🌸 Cute Animal Facts Quiz",
+  "description": "Test your knowledge about adorable animals! Learn fun facts about puppies, kittens, bunnies, and other cute creatures. Perfect for animal lovers and anyone who needs a dose of cuteness! 🐾",
+  "questions": [
+    {
+      "type": "single",
+      "question": "What is the scientific name for a baby rabbit?",
+      "options": [
+        "Pup",
+        "Kitten",
+        "Bunny",
+        "Kit"
+      ],
+      "correct": [3],
+      "explanations": [
+        "A baby rabbit is called a 'kit' or 'kitten' in scientific terms, though 'bunny' is the more common term we use.",
+        "Pup is used for baby dogs and seals.",
+        "Kitten is used for baby cats and rabbits (scientifically).",
+        "Bunny is the common term but not the scientific name.",
+        "Kit is the correct scientific term for a baby rabbit."
+      ],
+      "blurb": "🐰 Baby rabbits are called 'kits' and are born hairless and blind, but they grow up to be the adorable bunnies we all love!"
+    },
+    {
+      "type": "multiple",
+      "question": "Which of these animals are known for their cuteness? (Select all that apply)",
+      "options": [
+        "Pandas",
+        "Puppies",
+        "Kittens",
+        "Hedgehogs",
+        "Puppies"
+      ],
+      "correct": [0, 1, 2, 3],
+      "explanations": [
+        "Pandas are universally considered adorable with their round faces and playful nature.",
+        "Puppies are classic symbols of cuteness and innocence.",
+        "Kittens are beloved for their tiny size and playful antics.",
+        "Hedgehogs are increasingly popular as cute pets with their tiny noses and round bodies.",
+        "All of these animals are commonly associated with cuteness!"
+      ],
+      "blurb": "💕 Cuteness is subjective, but these animals have won hearts worldwide with their adorable features and behaviors!"
+    },
+    {
+      "type": "single",
+      "question": "What makes a baby animal's face appear 'cuter' to humans?",
+      "options": [
+        "Large eyes relative to face size",
+        "Small nose and mouth",
+        "Round face shape",
+        "All of the above"
+      ],
+      "correct": [3],
+      "explanations": [
+        "Large eyes relative to face size is one factor that triggers our 'cute response'.",
+        "Small nose and mouth make faces appear more baby-like and innocent.",
+        "Round face shapes are associated with youth and vulnerability.",
+        "All of these features combined create the 'baby schema' that humans find irresistibly cute!"
+      ],
+      "blurb": "🧠 Scientists call this the 'baby schema' - our brains are wired to find certain features adorable to encourage caregiving!"
+    },
+    {
+      "type": "single",
+      "question": "Which animal is known as the 'happiest' animal in the world?",
+      "options": [
+        "Dolphin",
+        "Quokka",
+        "Golden Retriever",
+        "Panda"
+      ],
+      "correct": [1],
+      "explanations": [
+        "Dolphins are intelligent and playful, but not specifically known as the 'happiest'.",
+        "The quokka, a small marsupial from Australia, is often called the 'world's happiest animal' due to its permanent smile-like expression.",
+        "Golden Retrievers are very friendly and happy dogs, but not officially the 'happiest'.",
+        "Pandas are cute but not particularly known for being the happiest."
+      ],
+      "blurb": "😊 The quokka's natural facial structure makes it appear to be constantly smiling, earning it the title of the world's happiest animal!"
+    },
+    {
+      "type": "multiple",
+      "question": "What are some benefits of looking at cute animals? (Select all that apply)",
+      "options": [
+        "Reduces stress and anxiety",
+        "Increases focus and attention",
+        "Releases feel-good hormones",
+        "Improves mood and happiness",
+        "Makes you more productive"
+      ],
+      "correct": [0, 1, 2, 3, 4],
+      "explanations": [
+        "Studies show that looking at cute animals can significantly reduce stress and anxiety levels.",
+        "Cute images can improve focus and attention to detail, known as the 'cute effect'.",
+        "Viewing cute animals releases oxytocin and other feel-good hormones.",
+        "Cute animal content consistently improves mood and increases happiness.",
+        "Research suggests that cute images can boost productivity and performance on tasks."
+      ],
+      "blurb": "💝 Science proves that cute animals are good for your mental health! They're nature's natural mood boosters!"
+    }
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "title": "🌱 Plant Biology Quiz",
+  "questions": [
+    {
+      "type": "single",
+      "question": "What is the primary function of chlorophyll in plants?",
+      "options": [
+        "To provide structural support",
+        "To absorb sunlight for photosynthesis",
+        "To transport water and nutrients",
+        "To protect against diseases"
+      ],
+      "correct": [1],
+      "explanations": [
+        "Chlorophyll provides some structural support but that's not its primary function.",
+        "Chlorophyll is the green pigment that captures light energy for photosynthesis. This is correct.",
+        "Water and nutrients are transported through xylem and phloem, not chlorophyll.",
+        "Chlorophyll doesn't provide disease protection - that's the role of other compounds."
+      ],
+      "blurb": "Chlorophyll is essential for photosynthesis, the process by which plants convert light energy into chemical energy, producing glucose and oxygen from carbon dioxide and water."
+    },
+    {
+      "type": "multi",
+      "question": "Which of the following are essential macronutrients for plant growth?",
+      "options": [
+        "Nitrogen (N)",
+        "Phosphorus (P)",
+        "Potassium (K)",
+        "Zinc (Zn)",
+        "Calcium (Ca)",
+        "Iron (Fe)"
+      ],
+      "correct": [0, 1, 2, 4],
+      "explanations": [
+        "Nitrogen is essential for protein synthesis and leaf growth. This is correct.",
+        "Phosphorus is crucial for energy transfer and root development. This is correct.",
+        "Potassium regulates water movement and enzyme activation. This is correct.",
+        "Zinc is a micronutrient, not a macronutrient.",
+        "Calcium is needed for cell wall structure and membrane stability. This is correct.",
+        "Iron is a micronutrient, not a macronutrient."
+      ],
+      "blurb": "The three primary macronutrients (NPK) plus calcium, magnesium, and sulfur are required in large quantities for healthy plant growth and development."
+    },
+    {
+      "type": "single",
+      "question": "What type of root system is most efficient for water absorption in dry environments?",
+      "options": [
+        "Taproot system",
+        "Fibrous root system",
+        "Adventitious root system",
+        "Aerial root system"
+      ],
+      "correct": [0],
+      "explanations": [
+        "Taproots can grow deep into soil to reach water sources far below the surface. This is correct.",
+        "Fibrous roots spread horizontally but don't reach as deep as taproots.",
+        "Adventitious roots grow from stems or leaves, not ideal for deep water access.",
+        "Aerial roots are above ground and not suitable for water absorption in dry soil."
+      ],
+      "blurb": "Taproot systems, with their single main root growing deep into the soil, are highly effective at accessing water in arid environments where surface water is scarce."
+    },
+    {
+      "type": "single",
+      "question": "Which process describes the movement of water from roots to leaves?",
+      "options": [
+        "Transpiration",
+        "Translocation",
+        "Transpiration pull",
+        "Osmosis"
+      ],
+      "correct": [2],
+      "explanations": [
+        "Transpiration is the loss of water vapor from leaves, not the movement from roots to leaves.",
+        "Translocation refers to the movement of sugars through phloem, not water.",
+        "Transpiration pull is the mechanism that draws water up through xylem from roots to leaves. This is correct.",
+        "Osmosis is the movement of water across membranes, not the long-distance transport system."
+      ],
+      "blurb": "Transpiration pull creates a continuous water column from roots to leaves through the xylem, driven by water evaporation from leaf surfaces."
+    },
+    {
+      "type": "multi",
+      "question": "What are the main components of the plant cell wall?",
+      "options": [
+        "Cellulose",
+        "Hemicellulose",
+        "Pectin",
+        "Lignin",
+        "Chlorophyll",
+        "Starch"
+      ],
+      "correct": [0, 1, 2, 3],
+      "explanations": [
+        "Cellulose is the primary structural component of plant cell walls. This is correct.",
+        "Hemicellulose provides flexibility and connects cellulose fibers. This is correct.",
+        "Pectin acts as a cementing material between cells. This is correct.",
+        "Lignin provides rigidity and waterproofing, especially in woody plants. This is correct.",
+        "Chlorophyll is found in chloroplasts, not cell walls.",
+        "Starch is a storage carbohydrate, not a cell wall component."
+      ],
+      "blurb": "Plant cell walls are primarily composed of cellulose (structural), hemicellulose (flexibility), pectin (adhesion), and lignin (rigidity), creating a strong yet flexible structure."
+    },
+    {
+      "type": "single",
+      "question": "What is the primary function of stomata in plant leaves?",
+      "options": [
+        "To provide structural support",
+        "To regulate gas exchange and water loss",
+        "To store excess nutrients",
+        "To produce reproductive structures"
+      ],
+      "correct": [1],
+      "explanations": [
+        "Stomata don't provide structural support - that's the role of cell walls and vascular tissue.",
+        "Stomata control the exchange of CO2, O2, and water vapor between the plant and atmosphere. This is correct.",
+        "Nutrients are stored in vacuoles and other organelles, not stomata.",
+        "Reproductive structures are flowers, not stomata."
+      ],
+      "blurb": "Stomata are microscopic pores that balance the plant's need for CO2 (for photosynthesis) with water conservation, opening and closing based on environmental conditions."
+    },
+    {
+      "type": "single",
+      "question": "Which plant hormone is primarily responsible for cell elongation and stem growth?",
+      "options": [
+        "Auxin",
+        "Cytokinin",
+        "Gibberellin",
+        "Abscisic acid"
+      ],
+      "correct": [0],
+      "explanations": [
+        "Auxin promotes cell elongation and is crucial for stem growth and phototropism. This is correct.",
+        "Cytokinin promotes cell division and delays senescence, not elongation.",
+        "Gibberellin promotes stem elongation but auxin is the primary hormone for this process.",
+        "Abscisic acid inhibits growth and promotes dormancy, opposite of elongation."
+      ],
+      "blurb": "Auxin is the master growth hormone that controls cell elongation, apical dominance, and directional growth responses to light and gravity."
+    },
+    {
+      "type": "multi",
+      "question": "Which of the following are adaptations that help plants survive in desert environments?",
+      "options": [
+        "Thick, waxy cuticles",
+        "Reduced leaf surface area",
+        "Deep root systems",
+        "CAM photosynthesis",
+        "Large, broad leaves",
+        "High transpiration rates"
+      ],
+      "correct": [0, 1, 2, 3],
+      "explanations": [
+        "Thick cuticles reduce water loss through the leaf surface. This is correct.",
+        "Smaller leaves reduce surface area for water loss. This is correct.",
+        "Deep roots access water from deeper soil layers. This is correct.",
+        "CAM photosynthesis allows plants to fix CO2 at night when it's cooler. This is correct.",
+        "Large leaves would increase water loss, which is disadvantageous in deserts.",
+        "High transpiration would cause excessive water loss in dry environments."
+      ],
+      "blurb": "Desert plants have evolved multiple strategies to conserve water: reduced surface area, water-storing tissues, nocturnal CO2 fixation, and extensive root systems."
+    },
+    {
+      "type": "single",
+      "question": "What is the main difference between monocots and dicots?",
+      "options": [
+        "Monocots have one seed leaf, dicots have two",
+        "Monocots are always smaller than dicots",
+        "Monocots don't produce flowers",
+        "Dicots don't have vascular tissue"
+      ],
+      "correct": [0],
+      "explanations": [
+        "The primary difference is the number of cotyledons (seed leaves): monocots have one, dicots have two. This is correct.",
+        "Size varies greatly in both groups - this is not a defining characteristic.",
+        "Both monocots and dicots produce flowers - they are both angiosperms.",
+        "Both groups have vascular tissue - this is a characteristic of all vascular plants."
+      ],
+      "blurb": "Monocots and dicots are the two major groups of flowering plants, distinguished primarily by the number of cotyledons in their seeds and several other structural differences."
+    },
+    {
+      "type": "single",
+      "question": "Which process converts atmospheric nitrogen into a form plants can use?",
+      "options": [
+        "Photosynthesis",
+        "Nitrogen fixation",
+        "Transpiration",
+        "Respiration"
+      ],
+      "correct": [1],
+      "explanations": [
+        "Photosynthesis converts light energy to chemical energy, not nitrogen.",
+        "Nitrogen fixation converts atmospheric N2 into ammonia (NH3) that plants can absorb. This is correct.",
+        "Transpiration is water movement, not nitrogen conversion.",
+        "Respiration releases energy from glucose, not nitrogen conversion."
+      ],
+      "blurb": "Nitrogen fixation, performed by certain bacteria and cyanobacteria, converts atmospheric nitrogen into ammonia, making this essential nutrient available to plants."
+    },
+    {
+      "type": "multi",
+      "question": "What are the main stages of the plant life cycle?",
+      "options": [
+        "Germination",
+        "Vegetative growth",
+        "Flowering",
+        "Fruiting",
+        "Senescence",
+        "Photosynthesis"
+      ],
+      "correct": [0, 1, 2, 3, 4],
+      "explanations": [
+        "Germination is when the seed begins to grow into a seedling. This is correct.",
+        "Vegetative growth is the period of leaf, stem, and root development. This is correct.",
+        "Flowering is the reproductive stage when flowers develop. This is correct.",
+        "Fruiting is when seeds develop and mature. This is correct.",
+        "Senescence is the aging and death of plant parts or the whole plant. This is correct.",
+        "Photosynthesis is a process that occurs throughout the life cycle, not a distinct stage."
+      ],
+      "blurb": "The plant life cycle progresses through distinct phases: germination, vegetative growth, flowering, fruiting, and senescence, each with specific developmental goals."
+    },
+    {
+      "type": "single",
+      "question": "What is the primary function of the phloem in vascular plants?",
+      "options": [
+        "To transport water and minerals upward",
+        "To transport sugars and other organic compounds",
+        "To provide structural support",
+        "To store excess nutrients"
+      ],
+      "correct": [1],
+      "explanations": [
+        "Water and minerals are transported upward through xylem, not phloem.",
+        "Phloem transports sugars, amino acids, and other organic compounds throughout the plant. This is correct.",
+        "While phloem provides some support, its primary function is transport, not structural support.",
+        "Storage occurs in specialized cells and organs, not primarily in phloem."
+      ],
+      "blurb": "Phloem forms the 'sugar highway' of plants, transporting photosynthates from source tissues (like leaves) to sink tissues (like roots and fruits) throughout the plant."
+    }
+  ]
+}
