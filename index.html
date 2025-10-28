@@ -633,12 +633,19 @@
       margin-bottom: 24px;
     }
 
+    .header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
     .quiz-management-header h2 {
       margin: 0;
       color: var(--accent-solid);
       font-size: 24px;
       font-weight: 700;
     }
+
 
     .add-chapter-btn {
       background: var(--green);
@@ -772,7 +779,7 @@
     .chapter-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease-out;
+      transition: max-height 0.3s ease-in-out;
     }
 
     .chapter-content.expanded {
@@ -855,6 +862,33 @@
       color: var(--accent-solid);
       margin: 0;
       line-height: 1.3;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-title:hover {
+      background: var(--accent-light);
+      transform: translateY(-1px);
+    }
+
+    .quiz-title.editing {
+      background: var(--accent-light);
+      border: 2px solid var(--accent);
+    }
+
+    .quiz-title-input {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent-solid);
+      background: transparent;
+      border: none;
+      outline: none;
+      width: 100%;
+      padding: 4px 8px;
+      border-radius: 8px;
+      font-family: inherit;
     }
 
     .quiz-status {
@@ -1058,6 +1092,11 @@
         flex-direction: column;
         gap: 16px;
         align-items: stretch;
+      }
+      
+      .header-left {
+        align-items: center;
+        text-align: center;
       }
       
       .quiz-management-header h2 {
@@ -1432,10 +1471,12 @@
 
     <!-- Available Quizzes Module -->
     <div id="availableQuizzes" class="card">
-      <div class="quiz-management-header">
-        <h2>📚 Available Quizzes</h2>
-        <button id="addChapterBtn" class="add-chapter-btn">➕ Add Chapter</button>
-      </div>
+        <div class="quiz-management-header">
+          <div class="header-left">
+            <h2>📚 Available Quizzes</h2>
+          </div>
+          <button id="addChapterBtn" class="add-chapter-btn">➕ Add Chapter</button>
+        </div>
       <div id="chapterList" class="chapter-list">
         <div class="loading-message">Loading chapters...</div>
       </div>
@@ -1711,6 +1752,7 @@
     let quizResults = []; // Track individual question results
     let chaptersList = []; // Store available chapters
     let currentChapterId = null; // Track which chapter we're adding quizzes to
+    let sortByDate = false; // Default to alphabetical sorting
 
     // Quiz Management Functions
     async function loadChapters() {
@@ -1729,10 +1771,40 @@
           });
         });
         
+        // Sort chapters based on current sort method
+        sortChapters();
         renderChapters();
       } catch (error) {
         console.error('Error loading chapters:', error);
         chapterList.innerHTML = '<div class="empty-state"><h3>Error loading chapters</h3><p>Please try again later.</p></div>';
+      }
+    }
+
+    function sortChapters() {
+      if (sortByDate) {
+        // Sort by date (newest first)
+        chaptersList.sort((a, b) => {
+          const dateA = a.createdAt?.toDate ? a.createdAt.toDate() : new Date(a.createdAt);
+          const dateB = b.createdAt?.toDate ? b.createdAt.toDate() : new Date(b.createdAt);
+          return dateB - dateA;
+        });
+      } else {
+        // Sort alphabetically by title
+        chaptersList.sort((a, b) => a.title.localeCompare(b.title));
+      }
+    }
+
+    function toggleSort() {
+      sortByDate = !sortByDate;
+      sortChapters();
+      renderChapters();
+      updateSortIndicator();
+    }
+
+    function updateSortIndicator() {
+      const sortText = document.getElementById('sortText');
+      if (sortText) {
+        sortText.textContent = sortByDate ? '📅 By Date' : '🔤 Alphabetical';
       }
     }
 
@@ -1823,45 +1895,50 @@
       const button = document.querySelector(`[onclick="toggleChapter('${chapterId}')"]`);
       
       if (content.classList.contains('expanded')) {
+        // Close the chapter
         content.classList.remove('expanded');
+        content.style.maxHeight = '0';
+        content.style.overflow = 'hidden';
         button.textContent = 'Open';
+        
+        // Cancel any ongoing loading by clearing the quiz list
+        const quizList = document.getElementById(`quizzes-${chapterId}`);
+        quizList.innerHTML = '';
       } else {
-        // First load the quizzes, then expand
-        loadChapterQuizzes(chapterId).then(() => {
-          // Calculate the actual height needed
-          const quizList = document.getElementById(`quizzes-${chapterId}`);
-          const addQuizSection = content.querySelector('.chapter-add-quiz');
-          
-          // Temporarily show content to measure height
-          content.style.maxHeight = 'none';
-          content.style.overflow = 'visible';
-          const actualHeight = content.scrollHeight;
-          
-          // Reset for animation
-          content.style.maxHeight = '0';
-          content.style.overflow = 'hidden';
-          
-          // Add expanded class and set the calculated height
-          content.classList.add('expanded');
-          content.style.maxHeight = actualHeight + 'px';
-          
-          // After animation completes, remove the height restriction
-          setTimeout(() => {
-            content.style.maxHeight = 'none';
-            content.style.overflow = 'visible';
-            // Add class for very large content
-            if (actualHeight > 1500) {
-              content.classList.add('large-content');
-            }
-          }, 400);
-        });
+        // Open the chapter immediately
+        content.classList.add('expanded');
+        content.style.maxHeight = '2000px'; // Start with large height
+        content.style.overflow = 'visible';
         button.textContent = 'Close';
+        
+        // Show loading state immediately
+        const quizList = document.getElementById(`quizzes-${chapterId}`);
+        quizList.innerHTML = '<div class="loading-message">Loading quizzes...</div>';
+        
+        // Load quizzes in the background
+        loadChapterQuizzes(chapterId).then(() => {
+          // Check if chapter is still open before updating content
+          if (content.classList.contains('expanded')) {
+            // After loading, adjust height to actual content
+            const actualHeight = content.scrollHeight;
+            content.style.maxHeight = actualHeight + 'px';
+            
+            // Remove height restriction after a short delay
+            setTimeout(() => {
+              if (content.classList.contains('expanded')) {
+                content.style.maxHeight = 'none';
+                if (actualHeight > 1500) {
+                  content.classList.add('large-content');
+                }
+              }
+            }, 100);
+          }
+        });
       }
     }
 
     async function loadChapterQuizzes(chapterId) {
       const quizList = document.getElementById(`quizzes-${chapterId}`);
-      quizList.innerHTML = '<div class="loading-message">Loading quizzes...</div>';
       
       try {
         const snapshot = await db.collection('quizzes')
@@ -1917,7 +1994,7 @@
           <div class="quiz-item" data-quiz-id="${quiz.id}">
             <div class="quiz-item-header">
               <div class="quiz-title-section">
-                <h3 class="quiz-title">${quiz.title}</h3>
+                <h3 class="quiz-title" ondblclick="editQuizTitle('${quiz.id}')" title="Double-click to edit quiz name">${quiz.title}</h3>
                 <span class="quiz-status ${quiz.highestScore > 0 ? 'has-score' : 'no-score'}">
                   ${quiz.highestScore > 0 ? `🏆 ${quiz.highestScore}/${quiz.totalQuestions} (${Math.round((quiz.highestScore/quiz.totalQuestions)*100)}%)` : '📝 Not attempted'}
                 </span>
@@ -2008,6 +2085,75 @@
     function cancelChapterEdit(chapterId, originalTitle) {
       const chapterItem = document.querySelector(`[data-chapter-id="${chapterId}"]`);
       const titleEl = chapterItem.querySelector('.chapter-title');
+      
+      titleEl.innerHTML = originalTitle;
+      titleEl.classList.remove('editing');
+    }
+
+    // Quiz Title Editing Functions
+    function editQuizTitle(quizId) {
+      const quizItem = document.querySelector(`[data-quiz-id="${quizId}"]`);
+      const titleEl = quizItem.querySelector('.quiz-title');
+      
+      const currentTitle = titleEl.textContent.trim();
+      
+      const input = document.createElement('input');
+      input.className = 'quiz-title-input';
+      input.value = currentTitle;
+      input.placeholder = 'Enter quiz name...';
+      
+      titleEl.innerHTML = '';
+      titleEl.classList.add('editing');
+      titleEl.appendChild(input);
+      
+      input.focus();
+      input.select();
+      
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          saveQuizTitle(quizId, input.value.trim());
+        } else if (e.key === 'Escape') {
+          cancelQuizEdit(quizId, currentTitle);
+        }
+      });
+      
+      input.addEventListener('blur', () => {
+        saveQuizTitle(quizId, input.value.trim());
+      });
+    }
+
+    async function saveQuizTitle(quizId, newTitle) {
+      if (!newTitle || newTitle.trim() === '') {
+        alert('Quiz name cannot be empty!');
+        return;
+      }
+      
+      try {
+        // Update in Firebase
+        await db.collection('quizzes').doc(quizId).update({
+          title: newTitle.trim()
+        });
+        
+        // Update the display
+        const quizItem = document.querySelector(`[data-quiz-id="${quizId}"]`);
+        const titleEl = quizItem.querySelector('.quiz-title');
+        
+        titleEl.innerHTML = newTitle.trim();
+        titleEl.classList.remove('editing');
+        
+        // Reload the chapter to update the quiz list
+        const chapterId = quizItem.closest('.chapter-content').id.replace('content-', '');
+        await loadChapterQuizzes(chapterId);
+        
+      } catch (error) {
+        console.error('Error updating quiz title:', error);
+        alert('Error updating quiz title. Please try again.');
+      }
+    }
+
+    function cancelQuizEdit(quizId, originalTitle) {
+      const quizItem = document.querySelector(`[data-quiz-id="${quizId}"]`);
+      const titleEl = quizItem.querySelector('.quiz-title');
       
       titleEl.innerHTML = originalTitle;
       titleEl.classList.remove('editing');
@@ -2891,6 +3037,15 @@
     // Initialize the app
     loadChapters();
     initMobileFeatures();
+    updateSortIndicator();
+
+    // Keyboard shortcut for sorting toggle
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.shiftKey) {
+        e.preventDefault();
+        toggleSort();
+      }
+    });
   </script>
 </body>
 </html>
